@@ -32,28 +32,31 @@ puts ""
 # ------------------------------------------------------
 # ------------------------------------------------------
 
-# Metodo que recibe dos argumentos: el arreglo y la suma objetivo
-def two_sum (array, target)
-    # tamano del arreglo
-    length = array.length
-    # primer ciclo 
-    for i in 0..length
-        # incializo un contador
-        j = i+1 
-        # segundo ciclo
-        for a in j..length
-          if j < length
-            # Condicion para saber si sumar 2 pares es igual a target
-            if array[i] + array[a] == target
-               return [i, a]       
-           end
-          end
-          j+=1
-        end
-    end
+
+# Esto encontrara toda la combinacion de dos elementos que sumen target 
+result = (0...array.size).to_a.combination(2).select { |x, y| array[x] + array[y] == target }
+result.each do |value|
+  puts "Los indices son: #{value}"
 end
 
-# invoco el metodo two_sum y le paso los argumentos
-result = two_sum(array, target)
-puts "Los indices de los pares que suman #{target} son: #{result}" 
+
+
+# 
+# def two_sum (array, target)
+#     length = array.length 
+#     for i in 0..length
+#         j = i+1 
+#         for a in j..length
+#           if j < length
+#             if array[i] + array[a] == target
+#                return [i, a]       
+#            end
+#           end
+#           j+=1
+#         end
+#     end
+# end
+
+# result = two_sum(array, target)
+# puts "Los indices de los pares que suman #{target} son: #{result}" 
 
